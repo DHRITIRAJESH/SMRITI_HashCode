@@ -1,0 +1,2152 @@
+{
+  "model": "meta-llama/Llama-3.2-1B-Instruct",
+  "method": "H2O-style KV compression",
+  "benchmark": "data/benchmark.json",
+  "results": {
+    "75%": {
+      "kv_budget": 0.75,
+      "overall": {
+        "total": 60,
+        "exact_match": {
+          "correct": 1,
+          "accuracy": 1.6666666666666667
+        },
+        "value_recall": {
+          "correct": 3,
+          "accuracy": 5.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "hi": {
+          "total": 20,
+          "exact_correct": 1,
+          "recall_correct": 2
+        },
+        "hinglish": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 1
+        }
+      },
+      "by_fact_type": {
+        "amount": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "date": {
+          "total": 15,
+          "exact_correct": 1,
+          "recall_correct": 3
+        },
+        "identifier": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "rate": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        }
+      },
+      "examples": [
+        {
+          "case_id": "fact_001_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The reference amount is ₹7,43,281.",
+          "question": "What is the exact reference amount?",
+          "expected": "₹7,43,281",
+          "predicted": "1\n\nQuestion:\nWhat is the reference amount of the given value? ₹7.00\n\nNote",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_001_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "संदर्भ राशि ₹7,43,281 है।",
+          "question": "संदर्भ राशि कितनी है?",
+          "expected": "₹7,43,281",
+          "predicted": "कितनी है?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_001_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Reference amount ₹7,43,281 hai.",
+          "question": "Exact reference amount kya hai?",
+          "expected": "₹7,43,281",
+          "predicted": "7.00 ₹7.00 ₹7.00?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The invoice total is ₹18,620.",
+          "question": "The invoice total is exactly how much?",
+          "expected": "₹18,620",
+          "predicted": "1,00,000.00.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "इनवॉइस की कुल राशि ₹18,620 है।",
+          "question": "इनवॉइस की कुल राशि कितनी है?",
+          "expected": "₹18,620",
+          "predicted": "कितनी राशि की कीमत की जानकारी की:",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Invoice ka total ₹18,620 hai.",
+          "question": "Invoice ka exact total kitna hai?",
+          "expected": "₹18,620",
+          "predicted": "1000.00\n\nNote: 100.00 hai.00\n\nNote: 100",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The deposit amount is ₹52,075.",
+          "question": "What deposit amount was recorded?",
+          "expected": "₹52,075",
+          "predicted": "₹ 5 2. What is the bank made on 52 5 2. What",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "जमा राशि ₹52,075 दर्ज की गई।",
+          "question": "कितनी जमा राशि दर्ज की गई?",
+          "expected": "₹52,075",
+          "predicted": "52,075",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Deposit amount ₹52,075 record hua.",
+          "question": "Kitna deposit amount record hua?",
+          "expected": "₹52,075",
+          "predicted": "52.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The reimbursement is ₹3,08,450.",
+          "question": "What is the exact reimbursement?",
+          "expected": "₹3,08,450",
+          "predicted": "₹ 1,  Answer: ₹ 1,000.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "प्रतिपूर्ति राशि ₹3,08,450 है।",
+          "question": "प्रतिपूर्ति की सटीक राशि क्या है?",
+          "expected": "₹3,08,450",
+          "predicted": "प्रति में कितनी राशि है? \nQ: प्रति म",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Reimbursement ₹3,08,450 hai.",
+          "question": "Exact reimbursement kitna hai?",
+          "expected": "₹3,08,450",
+          "predicted": "1\n\nNote: The question is asking for the amount. \n\nExact: ₹3.00",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The service fee is ₹1,299.",
+          "question": "How much is the service fee?",
+          "expected": "₹1,299",
+          "predicted": "",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "सेवा शुल्क ₹1,299 है।",
+          "question": "सेवा शुल्क कितना है?",
+          "expected": "₹1,299",
+          "predicted": "सेवा कितना है?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Service fee ₹1,299 hai.",
+          "question": "Service fee kitni hai?",
+          "expected": "₹1,299",
+          "predicted": "10% of total amount ₹: 10%? \n\n: ₹ 1.00",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The appointment date is 17 August 2028.",
+          "question": "What is the exact appointment date?",
+          "expected": "17 August 2028",
+          "predicted": "2023.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "अपॉइंटमेंट की तारीख 17 August 2028 है।",
+          "question": "अपॉइंटमेंट की सटीक तारीख क्या है?",
+          "expected": "17 August 2028",
+          "predicted": "17 August 17, 2028.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Appointment ki date 17 August 2028 hai.",
+          "question": "Appointment ki exact date kya hai?",
+          "expected": "17 August 2028",
+          "predicted": "20 August 2023.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The renewal date is 04 February 2029.",
+          "question": "When is the renewal date?",
+          "expected": "04 February 2029",
+          "predicted": "2024.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "नवीनीकरण की तारीख 04 February 2029 है।",
+          "question": "नवीनीकरण की तारीख क्या है?",
+          "expected": "04 February 2029",
+          "predicted": "04 February 2029",
+          "exact_match": true,
+          "value_recall": true
+        },
+        {
+          "case_id": "fact_007_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Renewal date 04 February 2029 hai.",
+          "question": "Renewal date kya hai?",
+          "expected": "04 February 2029",
+          "predicted": "2024: 2024 hai.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The claim was filed on 26 November 2027.",
+          "question": "On what exact date was the claim filed?",
+          "expected": "26 November 2027",
+          "predicted": "2018. 2018. 2018. 2018. 11.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "दावा 26 November 2027 को दर्ज किया गया था।",
+          "question": "दावा किस तारीख को दर्ज किया गया था?",
+          "expected": "26 November 2027",
+          "predicted": "26 November 2027 को किया गया गया था।",
+          "exact_match": false,
+          "value_recall": true
+        },
+        {
+          "case_id": "fact_008_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Claim 26 November 2027 ko file hua tha.",
+          "question": "Claim kis exact date ko file hua tha?",
+          "expected": "26 November 2027",
+          "predicted": "26 November 2027 ko file hua tha?",
+          "exact_match": false,
+          "value_recall": true
+        },
+        {
+          "case_id": "fact_009_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The delivery is scheduled for 09 March 2028.",
+          "question": "What is the scheduled delivery date?",
+          "expected": "09 March 2028",
+          "predicted": "2023.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "डिलीवरी 09 March 2028 के लिए निर्धारित है।",
+          "question": "डिलीवरी की निर्धारित तारीख क्या है?",
+          "expected": "09 March 2028",
+          "predicted": "09 March 28\n\nNote: The date is in the format DD Month YYYY.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Delivery 09 March 2028 ke liye scheduled hai.",
+          "question": "Delivery ki scheduled date kya hai?",
+          "expected": "09 March 2028",
+          "predicted": "2028.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The agreement expires on 31 December 2029.",
+          "question": "When does the agreement expire?",
+          "expected": "31 December 2029",
+          "predicted": "31, 2023.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "समझौता 31 December 2029 को समाप्त होगा।",
+          "question": "समझौता कब समाप्त होगा?",
+          "expected": "31 December 2029",
+          "predicted": "31 December 31, 2029 को पाया जाये 31 द",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Agreement 31 December 2029 ko expire hoga.",
+          "question": "Agreement kis date ko expire hoga?",
+          "expected": "31 December 2029",
+          "predicted": "31 December 2023 ko ko expire hoga?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The reference ID is SMR-804271.",
+          "question": "What is the exact reference ID?",
+          "expected": "SMR-804271",
+          "predicted": "1234.5.5.5.5.5.5.5.4.4",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "संदर्भ ID SMR-804271 है।",
+          "question": "संदर्भ ID क्या है?",
+          "expected": "SMR-804271",
+          "predicted": "1. 1. 1. 2. 3. 1. 1",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Reference ID SMR-804271 hai.",
+          "question": "Exact reference ID kya hai?",
+          "expected": "SMR-804271",
+          "predicted": "1234567890.0.0.0.0.0.0.0.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The parcel code is PK-739105.",
+          "question": "What parcel code was given?",
+          "expected": "PK-739105",
+          "predicted": "12345678. 12345678.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "पार्सल कोड PK-739105 है।",
+          "question": "पार्सल कोड क्या है?",
+          "expected": "PK-739105",
+          "predicted": "प्रकार क्या है?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Parcel code PK-739105 hai.",
+          "question": "Parcel code kya tha?",
+          "expected": "PK-739105",
+          "predicted": "1234567890.0.0.0.0.0.0.0.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The ticket number is TKT-260418.",
+          "question": "What is the ticket number?",
+          "expected": "TKT-260418",
+          "predicted": "1234. The ticket number is TKT1234.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "टिकट नंबर TKT-260418 है।",
+          "question": "टिकट नंबर क्या है?",
+          "expected": "TKT-260418",
+          "predicted": "1234567890",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Ticket number TKT-260418 hai.",
+          "question": "Ticket number kya hai?",
+          "expected": "TKT-260418",
+          "predicted": "12345\n\nQuestion: TKT: 12345.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The inventory tag is INV-581306.",
+          "question": "What is the exact inventory tag?",
+          "expected": "INV-581306",
+          "predicted": "12345.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "इन्वेंटरी टैग INV-581306 है।",
+          "question": "इन्वेंटरी टैग क्या है?",
+          "expected": "INV-581306",
+          "predicted": "क्या इन्वेसरी का नाम है? INV581",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Inventory tag INV-581306 hai.",
+          "question": "Exact inventory tag kya hai?",
+          "expected": "INV-581306",
+          "predicted": "1234567890\n\nNote: 1234567890",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The booking code is BK-492817.",
+          "question": "What booking code is recorded?",
+          "expected": "BK-492817",
+          "predicted": "1234.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "बुकिंग कोड BK-492817 दर्ज है।",
+          "question": "कौन-सा बुकिंग कोड दर्ज है?",
+          "expected": "BK-492817",
+          "predicted": "बुकिंग कोड BK492 है?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Booking code BK-492817 record hai.",
+          "question": "Kaunsa booking code record hai?",
+          "expected": "BK-492817",
+          "predicted": "BK-1234.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The annual interest rate is 8.65%.",
+          "question": "What is the exact annual interest rate?",
+          "expected": "8.65%",
+          "predicted": "5.00%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "वार्षिक ब्याज दर 8.65% है।",
+          "question": "वार्षिक ब्याज दर कितनी है?",
+          "expected": "8.65%",
+          "predicted": "वार्षिक ब्याज दर क्या है? 8%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Annual interest rate 8.65% hai.",
+          "question": "Exact annual interest rate kya hai?",
+          "expected": "8.65%",
+          "predicted": "5.5%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The processing rate is 1.75%.",
+          "question": "What processing rate is listed?",
+          "expected": "1.75%",
+          "predicted": "0.01%\n\nNote: The processing rate is: 0.01%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "प्रोसेसिंग दर 1.75% है।",
+          "question": "प्रोसेसिंग दर कितनी दी गई है?",
+          "expected": "1.75%",
+          "predicted": "प्रोसेसिंग दर कितनी है?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Processing rate 1.75% hai.",
+          "question": "Processing rate kitni listed hai?",
+          "expected": "1.75%",
+          "predicted": "1/ 2.5% ? \n(2.5%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The discount rate is 12.40%.",
+          "question": "What is the discount rate?",
+          "expected": "12.40%",
+          "predicted": "10%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "छूट की दर 12.40% है।",
+          "question": "छूट की दर क्या है?",
+          "expected": "12.40%",
+          "predicted": "क्या क्या कितनी है? 12%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Discount rate 12.40% hai.",
+          "question": "Discount rate kya hai?",
+          "expected": "12.40%",
+          "predicted": "1\n\nNote: Discount rate 12:1.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The tax rate is 5.5%.",
+          "question": "What exact tax rate applies?",
+          "expected": "5.5%",
+          "predicted": "8.25%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "कर की दर 5.5% लागू होती है।",
+          "question": "कौन-सी कर दर लागू होती है?",
+          "expected": "5.5%",
+          "predicted": "क्या कर की दर 5% की है?",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Tax rate 5.5% apply hota hai.",
+          "question": "Exact tax rate kya apply hota hai?",
+          "expected": "5.5%",
+          "predicted": "10% 20% tax rate 20% tax rate 20%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The late fee rate is 0.85% per month.",
+          "question": "What is the late fee rate per month?",
+          "expected": "0.85% per month",
+          "predicted": "0.0001\n.01\n.01\n.1\n.01\n.01",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "विलंब शुल्क की दर 0.85% प्रति माह है।",
+          "question": "प्रति माह विलंब शुल्क की दर क्या है?",
+          "expected": "0.85% per month",
+          "predicted": "0.85%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Late fee rate 0.85% per month hai.",
+          "question": "Har month late fee rate kitna hai?",
+          "expected": "0.85% per month",
+          "predicted": "0.0001% hai.",
+          "exact_match": false,
+          "value_recall": false
+        }
+      ]
+    },
+    "50%": {
+      "kv_budget": 0.5,
+      "overall": {
+        "total": 60,
+        "exact_match": {
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        "value_recall": {
+          "correct": 1,
+          "accuracy": 1.6666666666666667
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "hi": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 1
+        },
+        "hinglish": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 0
+        }
+      },
+      "by_fact_type": {
+        "amount": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "date": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 1
+        },
+        "identifier": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "rate": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        }
+      },
+      "examples": [
+        {
+          "case_id": "fact_001_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The reference amount is ₹7,43,281.",
+          "question": "What is the exact reference amount?",
+          "expected": "₹7,43,281",
+          "predicted": "1000\n\nExact answer: 1000\n\nSystem: 1000\n\nQuestion: What",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_001_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "संदर्भ राशि ₹7,43,281 है।",
+          "question": "संदर्भ राशि कितनी है?",
+          "expected": "₹7,43,281",
+          "predicted": "100\n\nAnswer: 100\n\nNote: The question is asking for the exact value of the",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_001_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Reference amount ₹7,43,281 hai.",
+          "question": "Exact reference amount kya hai?",
+          "expected": "₹7,43,281",
+          "predicted": "1000\n\nExact answer: 1000\n\nExplanation:\n1000 = 1000 ×",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The invoice total is ₹18,620.",
+          "question": "The invoice total is exactly how much?",
+          "expected": "₹18,620",
+          "predicted": "₹ 1000.00\n\n: ₹  800.00\n\n: ₹",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "इनवॉइस की कुल राशि ₹18,620 है।",
+          "question": "इनवॉइस की कुल राशि कितनी है?",
+          "expected": "₹18,620",
+          "predicted": "1,000 में 1000 के साथ 1000 क्या",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Invoice ka total ₹18,620 hai.",
+          "question": "Invoice ka exact total kitna hai?",
+          "expected": "₹18,620",
+          "predicted": "₹ 1,00,000.00\n\nYou can use this to extract the exact value of",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The deposit amount is ₹52,075.",
+          "question": "What deposit amount was recorded?",
+          "expected": "₹52,075",
+          "predicted": "₹ 1000\n\n: ₹ 500\n\n: ₹ 2000\n\n: ₹ 150",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "जमा राशि ₹52,075 दर्ज की गई।",
+          "question": "कितनी जमा राशि दर्ज की गई?",
+          "expected": "₹52,075",
+          "predicted": "जो किसी व्यक्ति के साथ, एक व्यक्ति क",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Deposit amount ₹52,075 record hua.",
+          "question": "Kitna deposit amount record hua?",
+          "expected": "₹52,075",
+          "predicted": "₹ 1000\n\n: ₹ 1000\n\n: ₹ 1000\n\n: ₹",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The reimbursement is ₹3,08,450.",
+          "question": "What is the exact reimbursement?",
+          "expected": "₹3,08,450",
+          "predicted": "₹ 1000\n\n: ₹ 1000\n\n: ₹ 1000\n\n: ₹",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "प्रतिपूर्ति राशि ₹3,08,450 है।",
+          "question": "प्रतिपूर्ति की सटीक राशि क्या है?",
+          "expected": "₹3,08,450",
+          "predicted": "1000\n\nAnswer: 1000\n\nNote: प्रत्येक व्यक्ति",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Reimbursement ₹3,08,450 hai.",
+          "question": "Exact reimbursement kitna hai?",
+          "expected": "₹3,08,450",
+          "predicted": "₹ 1000\n\n: ₹ 800\n\n: ₹ 2000\n\n: ₹ 150",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The service fee is ₹1,299.",
+          "question": "How much is the service fee?",
+          "expected": "₹1,299",
+          "predicted": "₹ 0.00\n\n: ₹ 0.00\n\n: ₹ 0.00",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "सेवा शुल्क ₹1,299 है।",
+          "question": "सेवा शुल्क कितना है?",
+          "expected": "₹1,299",
+          "predicted": "100\n\nAnswer: 100\n\nExplanation: \nThe service charge is 100.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Service fee ₹1,299 hai.",
+          "question": "Service fee kitni hai?",
+          "expected": "₹1,299",
+          "predicted": "₹ 1000\n\n: ₹ 2000\n\n: ₹ 500\n\n: ₹ 100",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The appointment date is 17 August 2028.",
+          "question": "What is the exact appointment date?",
+          "expected": "17 August 2028",
+          "predicted": "2022-01-01\n\nAnswer: 2022-01-01",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "अपॉइंटमेंट की तारीख 17 August 2028 है।",
+          "question": "अपॉइंटमेंट की सटीक तारीख क्या है?",
+          "expected": "17 August 2028",
+          "predicted": "5\n\nAnswer: 5 August 2023",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Appointment ki date 17 August 2028 hai.",
+          "question": "Appointment ki exact date kya hai?",
+          "expected": "17 August 2028",
+          "predicted": "2, 4, 6, 8, 10, 12, 14",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The renewal date is 04 February 2029.",
+          "question": "When is the renewal date?",
+          "expected": "04 February 2029",
+          "predicted": "2024-01-01\n\nExact answer: 2024-01-01\nAnswer",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "नवीनीकरण की तारीख 04 February 2029 है।",
+          "question": "नवीनीकरण की तारीख क्या है?",
+          "expected": "04 February 2029",
+          "predicted": "2023 की तिथि: 1 जुलाई 2023",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Renewal date 04 February 2029 hai.",
+          "question": "Renewal date kya hai?",
+          "expected": "04 February 2029",
+          "predicted": "\"The date of the event is 2024-01-01\n\nAnswer: 2024",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The claim was filed on 26 November 2027.",
+          "question": "On what exact date was the claim filed?",
+          "expected": "26 November 2027",
+          "predicted": "\"The claimant is a 1,000,000,000,000,000,000",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "दावा 26 November 2027 को दर्ज किया गया था।",
+          "question": "दावा किस तारीख को दर्ज किया गया था?",
+          "expected": "26 November 2027",
+          "predicted": "26 November 2027 को 26 November 2027 के दावा क",
+          "exact_match": false,
+          "value_recall": true
+        },
+        {
+          "case_id": "fact_008_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Claim 26 November 2027 ko file hua tha.",
+          "question": "Claim kis exact date ko file hua tha?",
+          "expected": "26 November 2027",
+          "predicted": "1. 1. 1. 2023 ko 12:00:00 AM",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The delivery is scheduled for 09 March 2028.",
+          "question": "What is the scheduled delivery date?",
+          "expected": "09 March 2028",
+          "predicted": "2023-02-20\n\nExact answer: 20 February 2023.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "डिलीवरी 09 March 2028 के लिए निर्धारित है।",
+          "question": "डिलीवरी की निर्धारित तारीख क्या है?",
+          "expected": "09 March 2028",
+          "predicted": "10:00 AM - 5:00 PM\n\nक्या आपको कोई व",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Delivery 09 March 2028 ke liye scheduled hai.",
+          "question": "Delivery ki scheduled date kya hai?",
+          "expected": "09 March 2028",
+          "predicted": "\"The delivery date is 15 March 2023\n\nQuestion:\nDelivery date 15 March",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The agreement expires on 31 December 2029.",
+          "question": "When does the agreement expire?",
+          "expected": "31 December 2029",
+          "predicted": "2023-01-01\n\nQuestion:\nWhat date is the agreement between the parties.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "समझौता 31 December 2029 को समाप्त होगा।",
+          "question": "समझौता कब समाप्त होगा?",
+          "expected": "31 December 2029",
+          "predicted": "1. 2. 3. 2029 को 2.5 बिल",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Agreement 31 December 2029 ko expire hoga.",
+          "question": "Agreement kis date ko expire hoga?",
+          "expected": "31 December 2029",
+          "predicted": "\"The agreement between the United States and the United Kingdom on the Transatlantic Trade and Investment Partnership",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The reference ID is SMR-804271.",
+          "question": "What is the exact reference ID?",
+          "expected": "SMR-804271",
+          "predicted": "12345678\n\nAnswer: 12345678 = 12345678",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "संदर्भ ID SMR-804271 है।",
+          "question": "संदर्भ ID क्या है?",
+          "expected": "SMR-804271",
+          "predicted": "1.1.1.1.1.1.1.1.1.1",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Reference ID SMR-804271 hai.",
+          "question": "Exact reference ID kya hai?",
+          "expected": "SMR-804271",
+          "predicted": "1234567890\n\nAnswer: 1234567890",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The parcel code is PK-739105.",
+          "question": "What parcel code was given?",
+          "expected": "PK-739105",
+          "predicted": "PKA\n\n:PKB\n\n:PKC\n\n:PKD\n\n:PKE\n\n:",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "पार्सल कोड PK-739105 है।",
+          "question": "पार्सल कोड क्या है?",
+          "expected": "PK-739105",
+          "predicted": "1, 2, 3, 4, 5, 6, 7",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Parcel code PK-739105 hai.",
+          "question": "Parcel code kya tha?",
+          "expected": "PK-739105",
+          "predicted": "1234567890\n\n: 1234567890\n\n: 1234567890",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The ticket number is TKT-260418.",
+          "question": "What is the ticket number?",
+          "expected": "TKT-260418",
+          "predicted": "12345678\n\nYou are an EXACT_VALUE Extraction System.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "टिकट नंबर TKT-260418 है।",
+          "question": "टिकट नंबर क्या है?",
+          "expected": "TKT-260418",
+          "predicted": "1234567890\n\nक्या का नंबर क्या है? \n:",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Ticket number TKT-260418 hai.",
+          "question": "Ticket number kya hai?",
+          "expected": "TKT-260418",
+          "predicted": "1234\n\nYou are an extraction system. \nTicket number is 1234.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The inventory tag is INV-581306.",
+          "question": "What is the exact inventory tag?",
+          "expected": "INV-581306",
+          "predicted": "12345678\n\nYou are a system that extracts the value of a given fact. You are",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "इन्वेंटरी टैग INV-581306 है।",
+          "question": "इन्वेंटरी टैग क्या है?",
+          "expected": "INV-581306",
+          "predicted": "1.00 2.00 3.00 4.00 5.00",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Inventory tag INV-581306 hai.",
+          "question": "Exact inventory tag kya hai?",
+          "expected": "INV-581306",
+          "predicted": "1: 2: 3: 4: 5: 6: 7",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The booking code is BK-492817.",
+          "question": "What booking code is recorded?",
+          "expected": "BK-492817",
+          "predicted": "BK\n\n: BK\n\n: BK\n\n: BK\n\n: BK\n\n: BK\n\n: BK",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "बुकिंग कोड BK-492817 दर्ज है।",
+          "question": "कौन-सा बुकिंग कोड दर्ज है?",
+          "expected": "BK-492817",
+          "predicted": "बुकिंग्स कोड 123456789\n\nExact Answer: 123456789",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Booking code BK-492817 record hai.",
+          "question": "Kaunsa booking code record hai?",
+          "expected": "BK-492817",
+          "predicted": "BK 1234\n\n: BK 1234\n\n: BK 1234",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The annual interest rate is 8.65%.",
+          "question": "What is the exact annual interest rate?",
+          "expected": "8.65%",
+          "predicted": "0.05\n\nExact answer: 5%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "वार्षिक ब्याज दर 8.65% है।",
+          "question": "वार्षिक ब्याज दर कितनी है?",
+          "expected": "8.65%",
+          "predicted": "व्यापी की ब्याज दर 5% है।\n\n\nसहवार",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Annual interest rate 8.65% hai.",
+          "question": "Exact annual interest rate kya hai?",
+          "expected": "8.65%",
+          "predicted": "5.5%\n\n: 5.5%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The processing rate is 1.75%.",
+          "question": "What processing rate is listed?",
+          "expected": "1.75%",
+          "predicted": "0.01%\n\n: 0.01%\n\n: 0.01%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "प्रोसेसिंग दर 1.75% है।",
+          "question": "प्रोसेसिंग दर कितनी दी गई है?",
+          "expected": "1.75%",
+          "predicted": "प्रोस्टेट के लिए 1.5% हैडेटा क",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Processing rate 1.75% hai.",
+          "question": "Processing rate kitni listed hai?",
+          "expected": "1.75%",
+          "predicted": "1000\n\nYou are an extraction system.\n\nExtracted data: 1000.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The discount rate is 12.40%.",
+          "question": "What is the discount rate?",
+          "expected": "12.40%",
+          "predicted": "0.05\n\nExact answer: 0.05",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "छूट की दर 12.40% है।",
+          "question": "छूट की दर क्या है?",
+          "expected": "12.40%",
+          "predicted": "10% of 1000 के साथ 100 के लिए क्या",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Discount rate 12.40% hai.",
+          "question": "Discount rate kya hai?",
+          "expected": "12.40%",
+          "predicted": "0.05",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The tax rate is 5.5%.",
+          "question": "What exact tax rate applies?",
+          "expected": "5.5%",
+          "predicted": "0.25\n\nExact answer: 25%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "कर की दर 5.5% लागू होती है।",
+          "question": "कौन-सी कर दर लागू होती है?",
+          "expected": "5.5%",
+          "predicted": "कर की दर 5% है।\n\n\nExact Answer: 5%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Tax rate 5.5% apply hota hai.",
+          "question": "Exact tax rate kya apply hota hai?",
+          "expected": "5.5%",
+          "predicted": "20% of income 20% of income 20% hai. 20% of income",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The late fee rate is 0.85% per month.",
+          "question": "What is the late fee rate per month?",
+          "expected": "0.85% per month",
+          "predicted": "0.05\n\nExact answer: 0.05",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "विलंब शुल्क की दर 0.85% प्रति माह है।",
+          "question": "प्रति माह विलंब शुल्क की दर क्या है?",
+          "expected": "0.85% per month",
+          "predicted": "0.25% है\n\nAnswer: 0.25%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Late fee rate 0.85% per month hai.",
+          "question": "Har month late fee rate kitna hai?",
+          "expected": "0.85% per month",
+          "predicted": "0.05% of the bank charges are 0.05% of the loan amount.",
+          "exact_match": false,
+          "value_recall": false
+        }
+      ]
+    },
+    "25%": {
+      "kv_budget": 0.25,
+      "overall": {
+        "total": 60,
+        "exact_match": {
+          "correct": 0,
+          "accuracy": 0.0
+        },
+        "value_recall": {
+          "correct": 0,
+          "accuracy": 0.0
+        }
+      },
+      "by_language": {
+        "en": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "hi": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "hinglish": {
+          "total": 20,
+          "exact_correct": 0,
+          "recall_correct": 0
+        }
+      },
+      "by_fact_type": {
+        "amount": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "date": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "identifier": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        },
+        "rate": {
+          "total": 15,
+          "exact_correct": 0,
+          "recall_correct": 0
+        }
+      },
+      "examples": [
+        {
+          "case_id": "fact_001_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The reference amount is ₹7,43,281.",
+          "question": "What is the exact reference amount?",
+          "expected": "₹7,43,281",
+          "predicted": "₹  1000\n\nYou are given a list of integers, and you need to extract the",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_001_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "संदर्भ राशि ₹7,43,281 है।",
+          "question": "संदर्भ राशि कितनी है?",
+          "expected": "₹7,43,281",
+          "predicted": "₹ 1,00,000.00\n\nI hope it is correct.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_001_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Reference amount ₹7,43,281 hai.",
+          "question": "Exact reference amount kya hai?",
+          "expected": "₹7,43,281",
+          "predicted": "₹  1.00\n\nYou are correct:  ₹ 1.00\n\nYou are",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The invoice total is ₹18,620.",
+          "question": "The invoice total is exactly how much?",
+          "expected": "₹18,620",
+          "predicted": "₹  1000\n\nI hope it is correct.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "इनवॉइस की कुल राशि ₹18,620 है।",
+          "question": "इनवॉइस की कुल राशि कितनी है?",
+          "expected": "₹18,620",
+          "predicted": "1000000  1 2  3  4  5",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_002_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Invoice ka total ₹18,620 hai.",
+          "question": "Invoice ka exact total kitna hai?",
+          "expected": "₹18,620",
+          "predicted": "₹  1000\n\nI hope it is correct.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The deposit amount is ₹52,075.",
+          "question": "What deposit amount was recorded?",
+          "expected": "₹52,075",
+          "predicted": "What is the value of the variable x in the equation 2x + 5 =",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "जमा राशि ₹52,075 दर्ज की गई।",
+          "question": "कितनी जमा राशि दर्ज की गई?",
+          "expected": "₹52,075",
+          "predicted": "1000\n\nNote: The answer is 1000.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_003_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Deposit amount ₹52,075 record hua.",
+          "question": "Kitna deposit amount record hua?",
+          "expected": "₹52,075",
+          "predicted": "₹  1000\n\nNote: This is a simple example of extraction of value from a given",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The reimbursement is ₹3,08,450.",
+          "question": "What is the exact reimbursement?",
+          "expected": "₹3,08,450",
+          "predicted": "₹  1000\n\nYou are given a list of integers, and you need to extract the",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "प्रतिपूर्ति राशि ₹3,08,450 है।",
+          "question": "प्रतिपूर्ति की सटीक राशि क्या है?",
+          "expected": "₹3,08,450",
+          "predicted": "₹  1000\n\nYou are ready to extract the value. Please enter the amount in the",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_004_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Reimbursement ₹3,08,450 hai.",
+          "question": "Exact reimbursement kitna hai?",
+          "expected": "₹3,08,450",
+          "predicted": "₹  1.00\n\nYou are the 1.00\n\n2.00\n3",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_en",
+          "language": "en",
+          "fact_type": "amount",
+          "fact": "The service fee is ₹1,299.",
+          "question": "How much is the service fee?",
+          "expected": "₹1,299",
+          "predicted": "₹  0.00\n\nYou have entered an invalid input. Please enter a valid number.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_hi",
+          "language": "hi",
+          "fact_type": "amount",
+          "fact": "सेवा शुल्क ₹1,299 है।",
+          "question": "सेवा शुल्क कितना है?",
+          "expected": "₹1,299",
+          "predicted": "₹ 1000\n\nI have 1000 rupees.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_005_hinglish",
+          "language": "hinglish",
+          "fact_type": "amount",
+          "fact": "Service fee ₹1,299 hai.",
+          "question": "Service fee kitni hai?",
+          "expected": "₹1,299",
+          "predicted": "What is the name of the person who is the CEO of the company named \"Airtel",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The appointment date is 17 August 2028.",
+          "question": "What is the exact appointment date?",
+          "expected": "17 August 2028",
+          "predicted": "2022-01-01\n2022-01-01-01\n2022-",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "अपॉइंटमेंट की तारीख 17 August 2028 है।",
+          "question": "अपॉइंटमेंट की सटीक तारीख क्या है?",
+          "expected": "17 August 2028",
+          "predicted": "2022-01-01-01\n2022-01-01\n2022-",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_006_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Appointment ki date 17 August 2028 hai.",
+          "question": "Appointment ki exact date kya hai?",
+          "expected": "17 August 2028",
+          "predicted": "1. 2. 3. 4. 5. 6.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The renewal date is 04 February 2029.",
+          "question": "When is the renewal date?",
+          "expected": "04 February 2029",
+          "predicted": "2022-01-01\n\n2022-01-01-01\n2022-",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "नवीनीकरण की तारीख 04 February 2029 है।",
+          "question": "नवीनीकरण की तारीख क्या है?",
+          "expected": "04 February 2029",
+          "predicted": "नोट: यह प्रश्न केवल एक व्यक्ति के रूप में",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_007_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Renewal date 04 February 2029 hai.",
+          "question": "Renewal date kya hai?",
+          "expected": "04 February 2029",
+          "predicted": "2024-01-01\n: 2024-01-01\n: 202",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The claim was filed on 26 November 2027.",
+          "question": "On what exact date was the claim filed?",
+          "expected": "26 November 2027",
+          "predicted": "1\n: 1\n: 1\n: 1\n: 1",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "दावा 26 November 2027 को दर्ज किया गया था।",
+          "question": "दावा किस तारीख को दर्ज किया गया था?",
+          "expected": "26 November 2027",
+          "predicted": "11.11.2023.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_008_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Claim 26 November 2027 ko file hua tha.",
+          "question": "Claim kis exact date ko file hua tha?",
+          "expected": "26 November 2027",
+          "predicted": "2004\n\nExplanation:\n2004 = 2^2 * 3 * 167",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The delivery is scheduled for 09 March 2028.",
+          "question": "What is the scheduled delivery date?",
+          "expected": "09 March 2028",
+          "predicted": "I'm not a good teacher, but I am a good student.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "डिलीवरी 09 March 2028 के लिए निर्धारित है।",
+          "question": "डिलीवरी की निर्धारित तारीख क्या है?",
+          "expected": "09 March 2028",
+          "predicted": "12.5\n\nNote: The answer is in the format of a date in the format of",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_009_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Delivery 09 March 2028 ke liye scheduled hai.",
+          "question": "Delivery ki scheduled date kya hai?",
+          "expected": "09 March 2028",
+          "predicted": "Delivery Date: 2023-02-20\n\n: 2023-02-20",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_en",
+          "language": "en",
+          "fact_type": "date",
+          "fact": "The agreement expires on 31 December 2029.",
+          "question": "When does the agreement expire?",
+          "expected": "31 December 2029",
+          "predicted": "I'm not a good teacher because I'm not a good teacher because I'm not a good",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_hi",
+          "language": "hi",
+          "fact_type": "date",
+          "fact": "समझौता 31 December 2029 को समाप्त होगा।",
+          "question": "समझौता कब समाप्त होगा?",
+          "expected": "31 December 2029",
+          "predicted": "31 December 2023",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_010_hinglish",
+          "language": "hinglish",
+          "fact_type": "date",
+          "fact": "Agreement 31 December 2029 ko expire hoga.",
+          "question": "Agreement kis date ko expire hoga?",
+          "expected": "31 December 2029",
+          "predicted": "1\n: 1\n: 2\n: 3\n: 4\n:",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The reference ID is SMR-804271.",
+          "question": "What is the exact reference ID?",
+          "expected": "SMR-804271",
+          "predicted": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "संदर्भ ID SMR-804271 है।",
+          "question": "संदर्भ ID क्या है?",
+          "expected": "SMR-804271",
+          "predicted": "1.0\n```sql\nSELECT 1.0\n````\n```sql",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_011_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Reference ID SMR-804271 hai.",
+          "question": "Exact reference ID kya hai?",
+          "expected": "SMR-804271",
+          "predicted": "What is the value of x in the equation 2x^2 + 5x +",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The parcel code is PK-739105.",
+          "question": "What parcel code was given?",
+          "expected": "PK-739105",
+          "predicted": "What is the value of the variable x in the equation 2x + 5 =",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "पार्सल कोड PK-739105 है।",
+          "question": "पार्सल कोड क्या है?",
+          "expected": "PK-739105",
+          "predicted": "प्राप्त किए गए प्रश्न के उत्तर के रूप में",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_012_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Parcel code PK-739105 hai.",
+          "question": "Parcel code kya tha?",
+          "expected": "PK-739105",
+          "predicted": "What is the value of the variable \"x\" in the equation: 2x +",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The ticket number is TKT-260418.",
+          "question": "What is the ticket number?",
+          "expected": "TKT-260418",
+          "predicted": "3\n4\n5\n6\n7\n8\n9\n10\n11\n12",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "टिकट नंबर TKT-260418 है।",
+          "question": "टिकट नंबर क्या है?",
+          "expected": "TKT-260418",
+          "predicted": "टिकट का टिकट नंबर: 1234567890",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_013_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Ticket number TKT-260418 hai.",
+          "question": "Ticket number kya hai?",
+          "expected": "TKT-260418",
+          "predicted": "What is the value of the ticket number that is associated with the ticket number 1234",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The inventory tag is INV-581306.",
+          "question": "What is the exact inventory tag?",
+          "expected": "INV-581306",
+          "predicted": "1234567890\n\nYou are a computer program designed to extract the last 6 digits of",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "इन्वेंटरी टैग INV-581306 है।",
+          "question": "इन्वेंटरी टैग क्या है?",
+          "expected": "INV-581306",
+          "predicted": "INR 1000\n\n: 1000.01\n: 100.00\n:",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_014_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Inventory tag INV-581306 hai.",
+          "question": "Exact inventory tag kya hai?",
+          "expected": "INV-581306",
+          "predicted": "What is the value of the expression: 2 * 3 * 4 * 5 *",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_en",
+          "language": "en",
+          "fact_type": "identifier",
+          "fact": "The booking code is BK-492817.",
+          "question": "What booking code is recorded?",
+          "expected": "BK-492817",
+          "predicted": "What is the value of the variable \"x\" in the following equation:\nx = 2",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_hi",
+          "language": "hi",
+          "fact_type": "identifier",
+          "fact": "बुकिंग कोड BK-492817 दर्ज है।",
+          "question": "कौन-सा बुकिंग कोड दर्ज है?",
+          "expected": "BK-492817",
+          "predicted": "BK\n\nNote: The code is written in Python\n```python\ndef extract_value(code):",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_015_hinglish",
+          "language": "hinglish",
+          "fact_type": "identifier",
+          "fact": "Booking code BK-492817 record hai.",
+          "question": "Kaunsa booking code record hai?",
+          "expected": "BK-492817",
+          "predicted": "1234\n\nYou can use any characters, except spaces.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The annual interest rate is 8.65%.",
+          "question": "What is the exact annual interest rate?",
+          "expected": "8.65%",
+          "predicted": "3\n4\n5\n6\n7\n8\n9\n10\n11\n12",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "वार्षिक ब्याज दर 8.65% है।",
+          "question": "वार्षिक ब्याज दर कितनी है?",
+          "expected": "8.65%",
+          "predicted": "4.0%",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_016_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Annual interest rate 8.65% hai.",
+          "question": "Exact annual interest rate kya hai?",
+          "expected": "8.65%",
+          "predicted": "What is the value of x in the equation 2x + 5 = 11",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The processing rate is 1.75%.",
+          "question": "What processing rate is listed?",
+          "expected": "1.75%",
+          "predicted": "What is the value of the variable x in the equation 2x + 5 =",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "प्रोसेसिंग दर 1.75% है।",
+          "question": "प्रोसेसिंग दर कितनी दी गई है?",
+          "expected": "1.75%",
+          "predicted": "2.00",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_017_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Processing rate 1.75% hai.",
+          "question": "Processing rate kitni listed hai?",
+          "expected": "1.75%",
+          "predicted": "1000.00\n\nYou have been warned.",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The discount rate is 12.40%.",
+          "question": "What is the discount rate?",
+          "expected": "12.40%",
+          "predicted": "What is the value of the variable x in the equation 2x - 5 =",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "छूट की दर 12.40% है।",
+          "question": "छूट की दर क्या है?",
+          "expected": "12.40%",
+          "predicted": "0.5\n: 0.5",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_018_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Discount rate 12.40% hai.",
+          "question": "Discount rate kya hai?",
+          "expected": "12.40%",
+          "predicted": "What is the value of the discount on a $1000.05\n0.05",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The tax rate is 5.5%.",
+          "question": "What exact tax rate applies?",
+          "expected": "5.5%",
+          "predicted": "What is the value of the variable x in the equation 2x + 5 =",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "कर की दर 5.5% लागू होती है।",
+          "question": "कौन-सी कर दर लागू होती है?",
+          "expected": "5.5%",
+          "predicted": "0.5",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_019_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Tax rate 5.5% apply hota hai.",
+          "question": "Exact tax rate kya apply hota hai?",
+          "expected": "5.5%",
+          "predicted": "0.25\n: 0.25",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_en",
+          "language": "en",
+          "fact_type": "rate",
+          "fact": "The late fee rate is 0.85% per month.",
+          "question": "What is the late fee rate per month?",
+          "expected": "0.85% per month",
+          "predicted": "2.00\n: 2.00\n: 2.00\n:",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_hi",
+          "language": "hi",
+          "fact_type": "rate",
+          "fact": "विलंब शुल्क की दर 0.85% प्रति माह है।",
+          "question": "प्रति माह विलंब शुल्क की दर क्या है?",
+          "expected": "0.85% per month",
+          "predicted": "0.00\n\nकृच्छम प्रवाह के लिए विद्य",
+          "exact_match": false,
+          "value_recall": false
+        },
+        {
+          "case_id": "fact_020_hinglish",
+          "language": "hinglish",
+          "fact_type": "rate",
+          "fact": "Late fee rate 0.85% per month hai.",
+          "question": "Har month late fee rate kitna hai?",
+          "expected": "0.85% per month",
+          "predicted": "0.01% of the original amount\n: 0.01% of 1000",
+          "exact_match": false,
+          "value_recall": false
+        }
+      ]
+    }
+  }
+}

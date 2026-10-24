@@ -1,0 +1,775 @@
+Loading tokenizer...
+Loading model...
+Loading weights:   0%|          | 0/146 [00:00<?, ?it/s]Loading weights:   1%|          | 1/146 [00:03<09:15,  3.83s/it]Loading weights:   2%|▏         | 3/146 [00:04<02:33,  1.07s/it]Loading weights:   3%|▎         | 4/146 [00:04<01:50,  1.29it/s]Loading weights:   3%|▎         | 5/146 [00:04<01:38,  1.44it/s]Loading weights:  13%|█▎        | 19/146 [00:04<00:12, 10.22it/s]Loading weights:  17%|█▋        | 25/146 [00:06<00:19,  6.36it/s]Loading weights:  27%|██▋       | 39/146 [00:06<00:08, 12.30it/s]Loading weights:  30%|███       | 44/146 [00:10<00:22,  4.45it/s]Loading weights:  58%|█████▊    | 84/146 [00:10<00:04, 14.12it/s]Loading weights:  62%|██████▏   | 90/146 [00:11<00:04, 13.46it/s]Loading weights:  65%|██████▌   | 95/146 [00:12<00:04, 11.91it/s]Loading weights:  68%|██████▊   | 99/146 [00:12<00:03, 12.99it/s]Loading weights:  71%|███████   | 103/146 [00:13<00:04, 10.03it/s]Loading weights:  76%|███████▌  | 111/146 [00:13<00:02, 12.90it/s]Loading weights:  78%|███████▊  | 114/146 [00:13<00:02, 11.24it/s]Loading weights:  80%|████████  | 117/146 [00:13<00:02, 12.18it/s]Loading weights:  83%|████████▎ | 121/146 [00:14<00:01, 13.06it/s]Loading weights:  84%|████████▍ | 123/146 [00:14<00:01, 12.11it/s]Loading weights:  86%|████████▌ | 125/146 [00:14<00:01, 12.59it/s]Loading weights:  88%|████████▊ | 129/146 [00:14<00:01, 13.62it/s]Loading weights:  90%|████████▉ | 131/146 [00:15<00:01, 11.93it/s]Loading weights:  92%|█████████▏| 135/146 [00:15<00:00, 15.39it/s]Loading weights:  95%|█████████▍| 138/146 [00:15<00:00, 14.37it/s]Loading weights:  96%|█████████▌| 140/146 [00:15<00:00,  9.53it/s]Loading weights:  99%|█████████▊| 144/146 [00:16<00:00, 12.67it/s]Loading weights: 100%|██████████| 146/146 [00:16<00:00,  9.10it/s]
+Model loaded.
+
+Benchmark examples: 60
+
+======================================================================
+[1/60]
+Case: fact_001_en
+Language: en
+Type: amount
+Fact: The reference amount is ₹7,43,281.
+Question: What is the exact reference amount?
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+Expected: ₹7,43,281
+Predicted: The best answer is 7,43,281.
+Exact match: False
+
+======================================================================
+[2/60]
+Case: fact_001_hi
+Language: hi
+Type: amount
+Fact: संदर्भ राशि ₹7,43,281 है।
+Question: संदर्भ राशि कितनी है?
+Expected: ₹7,43,281
+Predicted: ₹7,43,281.00
+
+5. संदर्भ राशि कितन
+Exact match: False
+
+======================================================================
+[3/60]
+Case: fact_001_hinglish
+Language: hinglish
+Type: amount
+Fact: Reference amount ₹7,43,281 hai.
+Question: Exact reference amount kya hai?
+Expected: ₹7,43,281
+Predicted: ₹7,43,281
+
+Aapka koi vishay nahi hai?
+Exact match: False
+
+======================================================================
+[4/60]
+Case: fact_002_en
+Language: en
+Type: amount
+Fact: The invoice total is ₹18,620.
+Question: The invoice total is exactly how much?
+Expected: ₹18,620
+Predicted: ## Step 1:  We are given the invoice total as ₹18,620 and need to
+Exact match: False
+
+======================================================================
+[5/60]
+Case: fact_002_hi
+Language: hi
+Type: amount
+Fact: इनवॉइस की कुल राशि ₹18,620 है।
+Question: इनवॉइस की कुल राशि कितनी है?
+Expected: ₹18,620
+Predicted: 1.₹18,620
+2.₹18,620
+3.₹
+Exact match: False
+
+======================================================================
+[6/60]
+Case: fact_002_hinglish
+Language: hinglish
+Type: amount
+Fact: Invoice ka total ₹18,620 hai.
+Question: Invoice ka exact total kitna hai?
+Expected: ₹18,620
+Predicted: ## Step 1: Understand the problem
+We are given the total amount of an invoice, which
+Exact match: False
+
+======================================================================
+[7/60]
+Case: fact_003_en
+Language: en
+Type: amount
+Fact: The deposit amount is ₹52,075.
+Question: What deposit amount was recorded?
+Expected: ₹52,075
+Predicted: ## Step 1:  Identify the key information given in the problem.
+The deposit amount is given
+Exact match: False
+
+======================================================================
+[8/60]
+Case: fact_003_hi
+Language: hi
+Type: amount
+Fact: जमा राशि ₹52,075 दर्ज की गई।
+Question: कितनी जमा राशि दर्ज की गई?
+Expected: ₹52,075
+Predicted: जमा राशि ₹52,075 दर्ज की गई।
+
+Answer: 52
+Exact match: False
+
+======================================================================
+[9/60]
+Case: fact_003_hinglish
+Language: hinglish
+Type: amount
+Fact: Deposit amount ₹52,075 record hua.
+Question: Kitna deposit amount record hua?
+Expected: ₹52,075
+Predicted: ₹52,075
+
+Explanation:
+₹52,075 is the deposit amount record hua
+Exact match: False
+
+======================================================================
+[10/60]
+Case: fact_004_en
+Language: en
+Type: amount
+Fact: The reimbursement is ₹3,08,450.
+Question: What is the exact reimbursement?
+Expected: ₹3,08,450
+Predicted: ## Step 1:  We are given the reimbursement amount as ₹3,08,450.
+Exact match: False
+
+======================================================================
+[11/60]
+Case: fact_004_hi
+Language: hi
+Type: amount
+Fact: प्रतिपूर्ति राशि ₹3,08,450 है।
+Question: प्रतिपूर्ति की सटीक राशि क्या है?
+Expected: ₹3,08,450
+Predicted: 1.00
+2.00
+3.00
+4.00
+5.00
+Exact match: False
+
+======================================================================
+[12/60]
+Case: fact_004_hinglish
+Language: hinglish
+Type: amount
+Fact: Reimbursement ₹3,08,450 hai.
+Question: Exact reimbursement kitna hai?
+Expected: ₹3,08,450
+Predicted: 2. ₹1,00,000
+3. ₹1,20,000
+4.
+Exact match: False
+
+======================================================================
+[13/60]
+Case: fact_005_en
+Language: en
+Type: amount
+Fact: The service fee is ₹1,299.
+Question: How much is the service fee?
+Expected: ₹1,299
+Predicted: ₹1,299
+
+The best answer is A
+Exact match: False
+
+======================================================================
+[14/60]
+Case: fact_005_hi
+Language: hi
+Type: amount
+Fact: सेवा शुल्क ₹1,299 है।
+Question: सेवा शुल्क कितना है?
+Expected: ₹1,299
+Predicted: ₹1,299.00
+₹1,299.00
+₹1,
+Exact match: False
+
+======================================================================
+[15/60]
+Case: fact_005_hinglish
+Language: hinglish
+Type: amount
+Fact: Service fee ₹1,299 hai.
+Question: Service fee kitni hai?
+Expected: ₹1,299
+Predicted: ₹1,299
+
+Aapka service fee kitna hai?
+Aapka service fee
+Exact match: False
+
+======================================================================
+[16/60]
+Case: fact_006_en
+Language: en
+Type: date
+Fact: The appointment date is 17 August 2028.
+Question: What is the exact appointment date?
+Expected: 17 August 2028
+Predicted: 17 August 2028.
+Exact match: False
+
+======================================================================
+[17/60]
+Case: fact_006_hi
+Language: hi
+Type: date
+Fact: अपॉइंटमेंट की तारीख 17 August 2028 है।
+Question: अपॉइंटमेंट की सटीक तारीख क्या है?
+Expected: 17 August 2028
+Predicted: 17 August 2028
+Exact match: True
+
+======================================================================
+[18/60]
+Case: fact_006_hinglish
+Language: hinglish
+Type: date
+Fact: Appointment ki date 17 August 2028 hai.
+Question: Appointment ki exact date kya hai?
+Expected: 17 August 2028
+Predicted: 17 August 2028 hai.
+Exact match: False
+
+======================================================================
+[19/60]
+Case: fact_007_en
+Language: en
+Type: date
+Fact: The renewal date is 04 February 2029.
+Question: When is the renewal date?
+Expected: 04 February 2029
+Predicted: 04 February 2029.
+Exact match: False
+
+======================================================================
+[20/60]
+Case: fact_007_hi
+Language: hi
+Type: date
+Fact: नवीनीकरण की तारीख 04 February 2029 है।
+Question: नवीनीकरण की तारीख क्या है?
+Expected: 04 February 2029
+Predicted: 4 February 2029
+Exact match: False
+
+======================================================================
+[21/60]
+Case: fact_007_hinglish
+Language: hinglish
+Type: date
+Fact: Renewal date 04 February 2029 hai.
+Question: Renewal date kya hai?
+Expected: 04 February 2029
+Predicted: 04 February 2029 hai.
+Exact match: False
+
+======================================================================
+[22/60]
+Case: fact_008_en
+Language: en
+Type: date
+Fact: The claim was filed on 26 November 2027.
+Question: On what exact date was the claim filed?
+Expected: 26 November 2027
+Predicted: 26 November 2027.
+Exact match: False
+
+======================================================================
+[23/60]
+Case: fact_008_hi
+Language: hi
+Type: date
+Fact: दावा 26 November 2027 को दर्ज किया गया था।
+Question: दावा किस तारीख को दर्ज किया गया था?
+Expected: 26 November 2027
+Predicted: 26 November 2027
+Exact match: True
+
+======================================================================
+[24/60]
+Case: fact_008_hinglish
+Language: hinglish
+Type: date
+Fact: Claim 26 November 2027 ko file hua tha.
+Question: Claim kis exact date ko file hua tha?
+Expected: 26 November 2027
+Predicted: 26 November 2027 ko file hua tha.
+
+Answer: 26 November 2027 ko
+Exact match: False
+
+======================================================================
+[25/60]
+Case: fact_009_en
+Language: en
+Type: date
+Fact: The delivery is scheduled for 09 March 2028.
+Question: What is the scheduled delivery date?
+Expected: 09 March 2028
+Predicted: 09 March 2028.
+Exact match: False
+
+======================================================================
+[26/60]
+Case: fact_009_hi
+Language: hi
+Type: date
+Fact: डिलीवरी 09 March 2028 के लिए निर्धारित है।
+Question: डिलीवरी की निर्धारित तारीख क्या है?
+Expected: 09 March 2028
+Predicted: 09 March 2028
+
+डिलीवरी की निर्धारित तार
+Exact match: False
+
+======================================================================
+[27/60]
+Case: fact_009_hinglish
+Language: hinglish
+Type: date
+Fact: Delivery 09 March 2028 ke liye scheduled hai.
+Question: Delivery ki scheduled date kya hai?
+Expected: 09 March 2028
+Predicted: 09 March 2028
+
+Note: The question is asking for the exact date of delivery, not
+Exact match: False
+
+======================================================================
+[28/60]
+Case: fact_010_en
+Language: en
+Type: date
+Fact: The agreement expires on 31 December 2029.
+Question: When does the agreement expire?
+Expected: 31 December 2029
+Predicted: 31 December 2029
+Exact match: True
+
+======================================================================
+[29/60]
+Case: fact_010_hi
+Language: hi
+Type: date
+Fact: समझौता 31 December 2029 को समाप्त होगा।
+Question: समझौता कब समाप्त होगा?
+Expected: 31 December 2029
+Predicted: 31 December 2029
+Exact match: True
+
+======================================================================
+[30/60]
+Case: fact_010_hinglish
+Language: hinglish
+Type: date
+Fact: Agreement 31 December 2029 ko expire hoga.
+Question: Agreement kis date ko expire hoga?
+Expected: 31 December 2029
+Predicted: 31 December 2029 ko expire hoga.
+Exact match: False
+
+======================================================================
+[31/60]
+Case: fact_011_en
+Language: en
+Type: identifier
+Fact: The reference ID is SMR-804271.
+Question: What is the exact reference ID?
+Expected: SMR-804271
+Predicted: SMR-804271
+SMR-804272
+SMR-804273
+SMR
+Exact match: False
+
+======================================================================
+[32/60]
+Case: fact_011_hi
+Language: hi
+Type: identifier
+Fact: संदर्भ ID SMR-804271 है।
+Question: संदर्भ ID क्या है?
+Expected: SMR-804271
+Predicted: 1. 1.1.1.1.1.1.1.1.1
+Exact match: False
+
+======================================================================
+[33/60]
+Case: fact_011_hinglish
+Language: hinglish
+Type: identifier
+Fact: Reference ID SMR-804271 hai.
+Question: Exact reference ID kya hai?
+Expected: SMR-804271
+Predicted: Reference ID SMR-804271 hai.
+Exact match: False
+
+======================================================================
+[34/60]
+Case: fact_012_en
+Language: en
+Type: identifier
+Fact: The parcel code is PK-739105.
+Question: What parcel code was given?
+Expected: PK-739105
+Predicted: PK-739105
+PK-739106
+PK-739107
+PK-739108
+Exact match: False
+
+======================================================================
+[35/60]
+Case: fact_012_hi
+Language: hi
+Type: identifier
+Fact: पार्सल कोड PK-739105 है।
+Question: पार्सल कोड क्या है?
+Expected: PK-739105
+Predicted: PK-739105
+Exact match: True
+
+======================================================================
+[36/60]
+Case: fact_012_hinglish
+Language: hinglish
+Type: identifier
+Fact: Parcel code PK-739105 hai.
+Question: Parcel code kya tha?
+Expected: PK-739105
+Predicted: PK-739105
+PK-739106
+PK-739107
+PK-739108
+Exact match: False
+
+======================================================================
+[37/60]
+Case: fact_013_en
+Language: en
+Type: identifier
+Fact: The ticket number is TKT-260418.
+Question: What is the ticket number?
+Expected: TKT-260418
+Predicted: TKT-260418
+TKT-260419
+TKT-260418
+TKT
+Exact match: False
+
+======================================================================
+[38/60]
+Case: fact_013_hi
+Language: hi
+Type: identifier
+Fact: टिकट नंबर TKT-260418 है।
+Question: टिकट नंबर क्या है?
+Expected: TKT-260418
+Predicted: TKT-260418
+Exact match: True
+
+======================================================================
+[39/60]
+Case: fact_013_hinglish
+Language: hinglish
+Type: identifier
+Fact: Ticket number TKT-260418 hai.
+Question: Ticket number kya hai?
+Expected: TKT-260418
+Predicted: TKT-260418
+
+A) 123456
+B) 1234567
+C
+Exact match: False
+
+======================================================================
+[40/60]
+Case: fact_014_en
+Language: en
+Type: identifier
+Fact: The inventory tag is INV-581306.
+Question: What is the exact inventory tag?
+Expected: INV-581306
+Predicted: INV-581306
+INV-581307
+INV-581308
+INV-581309
+Exact match: False
+
+======================================================================
+[41/60]
+Case: fact_014_hi
+Language: hi
+Type: identifier
+Fact: इन्वेंटरी टैग INV-581306 है।
+Question: इन्वेंटरी टैग क्या है?
+Expected: INV-581306
+Predicted: 1. स्टॉक
+2. बॉन्ड
+3. फंड
+4. अन
+Exact match: False
+
+======================================================================
+[42/60]
+Case: fact_014_hinglish
+Language: hinglish
+Type: identifier
+Fact: Inventory tag INV-581306 hai.
+Question: Exact inventory tag kya hai?
+Expected: INV-581306
+Predicted: INV-581306
+INV-581307
+INV-581308
+INV-581309
+Exact match: False
+
+======================================================================
+[43/60]
+Case: fact_015_en
+Language: en
+Type: identifier
+Fact: The booking code is BK-492817.
+Question: What booking code is recorded?
+Expected: BK-492817
+Predicted: BK-492817
+BK-492818
+BK-492819
+BK-492820
+Exact match: False
+
+======================================================================
+[44/60]
+Case: fact_015_hi
+Language: hi
+Type: identifier
+Fact: बुकिंग कोड BK-492817 दर्ज है।
+Question: कौन-सा बुकिंग कोड दर्ज है?
+Expected: BK-492817
+Predicted: BK-492817
+Exact match: True
+
+======================================================================
+[45/60]
+Case: fact_015_hinglish
+Language: hinglish
+Type: identifier
+Fact: Booking code BK-492817 record hai.
+Question: Kaunsa booking code record hai?
+Expected: BK-492817
+Predicted: BK-492817
+BK-492818
+BK-492819
+BK-492820
+Exact match: False
+
+======================================================================
+[46/60]
+Case: fact_016_en
+Language: en
+Type: rate
+Fact: The annual interest rate is 8.65%.
+Question: What is the exact annual interest rate?
+Expected: 8.65%
+Predicted: ## Step 1:  To find the exact annual interest rate, we need to understand that the
+Exact match: False
+
+======================================================================
+[47/60]
+Case: fact_016_hi
+Language: hi
+Type: rate
+Fact: वार्षिक ब्याज दर 8.65% है।
+Question: वार्षिक ब्याज दर कितनी है?
+Expected: 8.65%
+Predicted: 1.75%
+2.75%
+3.75%
+4.75%
+5.75%
+Exact match: False
+
+======================================================================
+[48/60]
+Case: fact_016_hinglish
+Language: hinglish
+Type: rate
+Fact: Annual interest rate 8.65% hai.
+Question: Exact annual interest rate kya hai?
+Expected: 8.65%
+Predicted: 2.5% hai.
+
+Explanation:
+Interest rate hai 8.65% hai, aur
+Exact match: False
+
+======================================================================
+[49/60]
+Case: fact_017_en
+Language: en
+Type: rate
+Fact: The processing rate is 1.75%.
+Question: What processing rate is listed?
+Expected: 1.75%
+Predicted: ## Step 1: Identify the processing rate given in the problem.
+The problem states that the processing
+Exact match: False
+
+======================================================================
+[50/60]
+Case: fact_017_hi
+Language: hi
+Type: rate
+Fact: प्रोसेसिंग दर 1.75% है।
+Question: प्रोसेसिंग दर कितनी दी गई है?
+Expected: 1.75%
+Predicted: 1.75%
+Exact match: True
+
+======================================================================
+[51/60]
+Case: fact_017_hinglish
+Language: hinglish
+Type: rate
+Fact: Processing rate 1.75% hai.
+Question: Processing rate kitni listed hai?
+Expected: 1.75%
+Predicted: 1.75% 2.75% 3.75% 4.75%
+Exact match: False
+
+======================================================================
+[52/60]
+Case: fact_018_en
+Language: en
+Type: rate
+Fact: The discount rate is 12.40%.
+Question: What is the discount rate?
+Expected: 12.40%
+Predicted: ## Step 1: Identify the discount rate given in the problem.
+The discount rate is given as
+Exact match: False
+
+======================================================================
+[53/60]
+Case: fact_018_hi
+Language: hi
+Type: rate
+Fact: छूट की दर 12.40% है।
+Question: छूट की दर क्या है?
+Expected: 12.40%
+Predicted: 1. 12.40%
+2. 12.4%
+3. 12.40
+Exact match: False
+
+======================================================================
+[54/60]
+Case: fact_018_hinglish
+Language: hinglish
+Type: rate
+Fact: Discount rate 12.40% hai.
+Question: Discount rate kya hai?
+Expected: 12.40%
+Predicted: Discount rate 12.40% hai.
+
+Answer: 12.40% hai.
+Exact match: False
+
+======================================================================
+[55/60]
+Case: fact_019_en
+Language: en
+Type: rate
+Fact: The tax rate is 5.5%.
+Question: What exact tax rate applies?
+Expected: 5.5%
+Predicted: 1.25%
+2.50%
+3.00%
+4.00%
+5.00%
+Exact match: False
+
+======================================================================
+[56/60]
+Case: fact_019_hi
+Language: hi
+Type: rate
+Fact: कर की दर 5.5% लागू होती है।
+Question: कौन-सी कर दर लागू होती है?
+Expected: 5.5%
+Predicted: : 5.5%
+Exact match: False
+
+======================================================================
+[57/60]
+Case: fact_019_hinglish
+Language: hinglish
+Type: rate
+Fact: Tax rate 5.5% apply hota hai.
+Question: Exact tax rate kya apply hota hai?
+Expected: 5.5%
+Predicted: 5.5% 5.5% 5.5% 5.5%
+Exact match: False
+
+======================================================================
+[58/60]
+Case: fact_020_en
+Language: en
+Type: rate
+Fact: The late fee rate is 0.85% per month.
+Question: What is the late fee rate per month?
+Expected: 0.85% per month
+Predicted: ## Step 1: Understand the late fee rate
+The late fee rate is given as 0
+Exact match: False
+
+======================================================================
+[59/60]
+Case: fact_020_hi
+Language: hi
+Type: rate
+Fact: विलंब शुल्क की दर 0.85% प्रति माह है।
+Question: प्रति माह विलंब शुल्क की दर क्या है?
+Expected: 0.85% per month
+Predicted: 0.85%
+
+Answer: 0.85%
+Exact match: False
+
+======================================================================
+[60/60]
+Case: fact_020_hinglish
+Language: hinglish
+Type: rate
+Fact: Late fee rate 0.85% per month hai.
+Question: Har month late fee rate kitna hai?
+Expected: 0.85% per month
+Predicted: 0.85% hai.
+
+Answer: 0.85
+Exact match: False
+
+
+======================================================================
+OVERALL RESULTS
+======================================================================
+Total examples: 60
+Correct: 8
+Accuracy: 13.33%
+
+RESULTS BY LANGUAGE
+----------------------------------------------------------------------
+en           1/20 (5.00%)
+hi           7/20 (35.00%)
+hinglish     0/20 (0.00%)
+
+RESULTS BY FACT TYPE
+----------------------------------------------------------------------
+amount          0/15 (0.00%)
+date            4/15 (26.67%)
+identifier      3/15 (20.00%)
+rate            1/15 (6.67%)
+
+Saved results to data/baseline_results.json

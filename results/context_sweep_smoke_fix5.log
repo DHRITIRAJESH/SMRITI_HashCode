@@ -1,0 +1,15 @@
+Loading tokenizer/model: meta-llama/Llama-3.2-1B-Instruct
+Loading weights:   0%|          | 0/146 [00:00<?, ?it/s]Loading weights:   1%|          | 1/146 [00:04<09:49,  4.06s/it]Loading weights:   2%|▏         | 3/146 [00:04<02:43,  1.14s/it]Loading weights:   3%|▎         | 4/146 [00:04<01:58,  1.20it/s]Loading weights:   3%|▎         | 5/146 [00:04<01:30,  1.56it/s]Loading weights:   5%|▍         | 7/146 [00:05<00:58,  2.36it/s]Loading weights:  11%|█         | 16/146 [00:17<02:31,  1.16s/it]Loading weights: 100%|██████████| 146/146 [00:17<00:00,  8.21it/s]
+Benchmark examples: 2
+Filler-token targets: [128]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[1/2] fact_001_en filler=128 prompt_tokens=239 strict=True recoverable=True pred='₹7,43,281'
+[2/2] fact_001_hi filler=128 prompt_tokens=246 strict=True recoverable=True pred='₹7,43,281'
+
+====================================================================
+CONTEXT SWEEP SUMMARY
+====================================================================
+filler=  128  n=  2  strict=2/2 (100.00%)  recoverable=2/2 (100.00%)
+
+Saved: results/context_sweep_smoke_fix5.json
+Note: exact equality here is whitespace-normalized only. Audit answer normalization before making research claims.

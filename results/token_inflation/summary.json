@@ -1,0 +1,50 @@
+[
+  {
+    "split": "dev",
+    "n": 997,
+    "en_total_tokens": 25792,
+    "hi_total_tokens": 65394,
+    "aggregate_token_ratio_hi_en": 2.5354373449131513,
+    "token_inflation_percent": 153.54373449131512,
+    "en_mean_tokens": 25.86960882647944,
+    "hi_mean_tokens": 65.59077231695085,
+    "en_median_tokens": 25.0,
+    "hi_median_tokens": 63.0,
+    "en_tokens_per_word": 1.2308867042092202,
+    "hi_tokens_per_word": 2.6575364733612385,
+    "en_tokens_per_byte": 0.20585840849229786,
+    "hi_tokens_per_byte": 0.202927513475437,
+    "en_mean_bytes": 125.66700100300903,
+    "hi_mean_bytes": 323.22266800401206,
+    "bootstrap_ratio_ci_95": [
+      2.507985748353502,
+      2.5636293575755214
+    ],
+    "mean_sentence_token_ratio": 2.5601583972036748,
+    "median_sentence_token_ratio": 2.5238095238095237
+  },
+  {
+    "split": "devtest",
+    "n": 1012,
+    "en_total_tokens": 27171,
+    "hi_total_tokens": 68512,
+    "aggregate_token_ratio_hi_en": 2.5215119060763316,
+    "token_inflation_percent": 152.15119060763317,
+    "en_mean_tokens": 26.84881422924901,
+    "hi_mean_tokens": 67.699604743083,
+    "en_median_tokens": 26.0,
+    "hi_median_tokens": 65.0,
+    "en_tokens_per_word": 1.2406282818136158,
+    "hi_tokens_per_word": 2.6717622743048786,
+    "en_tokens_per_byte": 0.20569131540697674,
+    "hi_tokens_per_byte": 0.20325567458681057,
+    "en_mean_bytes": 130.52964426877472,
+    "hi_mean_bytes": 333.07608695652175,
+    "bootstrap_ratio_ci_95": [
+      2.493911214512804,
+      2.549780616542687
+    ],
+    "mean_sentence_token_ratio": 2.5515196890385394,
+    "median_sentence_token_ratio": 2.526315789473684
+  }
+]
